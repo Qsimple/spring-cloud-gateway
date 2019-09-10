@@ -14,15 +14,19 @@
  * limitations under the License.
  */
 
-package org.springframework.cloud.gateway.rsocket.common;
+package org.springframework.cloud.gateway.rsocket.common.autoconfigure;
 
 import io.rsocket.RSocket;
 
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.autoconfigure.rsocket.RSocketServerAutoConfiguration;
+import org.springframework.boot.autoconfigure.rsocket.RSocketStrategiesAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.rsocket.messaging.RSocketStrategiesCustomizer;
+import org.springframework.cloud.gateway.rsocket.common.metadata.Forwarding;
+import org.springframework.cloud.gateway.rsocket.common.metadata.RouteSetup;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -33,7 +37,15 @@ import org.springframework.context.annotation.Configuration;
 		matchIfMissing = true)
 @EnableConfigurationProperties
 @ConditionalOnClass(RSocket.class)
-@AutoConfigureBefore(RSocketServerAutoConfiguration.class)
+@AutoConfigureBefore(RSocketStrategiesAutoConfiguration.class)
 public class GatewayRSocketCommonAutoConfiguration {
+
+	@Bean
+	public RSocketStrategiesCustomizer gatewayRSocketStrategiesCustomizer() {
+		return strategies -> {
+			strategies.decoder(new Forwarding.Decoder(), new RouteSetup.Decoder())
+					.encoder(new Forwarding.Encoder(), new RouteSetup.Encoder());
+		};
+	}
 
 }

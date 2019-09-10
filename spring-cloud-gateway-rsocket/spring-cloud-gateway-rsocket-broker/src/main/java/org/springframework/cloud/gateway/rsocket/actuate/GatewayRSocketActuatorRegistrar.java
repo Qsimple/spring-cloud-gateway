@@ -29,7 +29,7 @@ import io.rsocket.frame.SetupFrameFlyweight;
 import io.rsocket.util.DefaultPayload;
 
 import org.springframework.cloud.gateway.rsocket.autoconfigure.GatewayRSocketProperties;
-import org.springframework.cloud.gateway.rsocket.metadata.TagsMetadata;
+import org.springframework.cloud.gateway.rsocket.common.metadata.TagsMetadata;
 import org.springframework.cloud.gateway.rsocket.routing.RoutingTable;
 import org.springframework.context.SmartLifecycle;
 import org.springframework.core.io.buffer.DataBufferFactory;

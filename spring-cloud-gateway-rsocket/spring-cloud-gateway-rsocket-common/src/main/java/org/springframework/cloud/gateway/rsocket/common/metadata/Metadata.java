@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.cloud.gateway.rsocket.metadata;
+package org.springframework.cloud.gateway.rsocket.common.metadata;
 
 import io.rsocket.metadata.WellKnownMimeType;
 

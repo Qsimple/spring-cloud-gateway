@@ -23,9 +23,9 @@ import io.rsocket.Payload;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import org.springframework.cloud.gateway.rsocket.common.metadata.Forwarding;
+import org.springframework.cloud.gateway.rsocket.common.metadata.Metadata;
 import org.springframework.cloud.gateway.rsocket.filter.AbstractRSocketExchange;
-import org.springframework.cloud.gateway.rsocket.metadata.Forwarding;
-import org.springframework.cloud.gateway.rsocket.metadata.Metadata;
 import org.springframework.messaging.rsocket.MetadataExtractor;
 
 /**

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.cloud.gateway.rsocket.metadata;
+package org.springframework.cloud.gateway.rsocket.common.metadata;
 
 import java.math.BigInteger;
 import java.util.Map;
@@ -36,8 +36,8 @@ import org.springframework.core.style.ToStringCreator;
 import org.springframework.util.Assert;
 import org.springframework.util.MimeType;
 
-import static org.springframework.cloud.gateway.rsocket.metadata.WellKnownKey.ROUTE_ID;
-import static org.springframework.cloud.gateway.rsocket.metadata.WellKnownKey.SERVICE_NAME;
+import static org.springframework.cloud.gateway.rsocket.common.metadata.WellKnownKey.ROUTE_ID;
+import static org.springframework.cloud.gateway.rsocket.common.metadata.WellKnownKey.SERVICE_NAME;
 
 // TODO: currently an ENVELOPE frame in RSocket extension, also discarding metadata
 public final class Forwarding extends TagsMetadata {

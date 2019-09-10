@@ -32,9 +32,9 @@ import org.apache.commons.logging.LogFactory;
 import reactor.core.publisher.Mono;
 
 import org.springframework.cloud.gateway.rsocket.autoconfigure.GatewayRSocketProperties;
+import org.springframework.cloud.gateway.rsocket.common.metadata.RouteSetup;
+import org.springframework.cloud.gateway.rsocket.common.metadata.TagsMetadata;
 import org.springframework.cloud.gateway.rsocket.core.GatewayRSocketFactory;
-import org.springframework.cloud.gateway.rsocket.metadata.RouteSetup;
-import org.springframework.cloud.gateway.rsocket.metadata.TagsMetadata;
 import org.springframework.cloud.gateway.rsocket.metrics.MicrometerResponderRSocket;
 import org.springframework.messaging.rsocket.MetadataExtractor;
 import org.springframework.util.MimeType;

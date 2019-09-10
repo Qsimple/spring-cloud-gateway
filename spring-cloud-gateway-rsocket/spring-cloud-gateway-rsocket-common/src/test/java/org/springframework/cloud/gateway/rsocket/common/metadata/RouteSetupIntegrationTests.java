@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.cloud.gateway.rsocket.metadata;
+package org.springframework.cloud.gateway.rsocket.common.metadata;
 
 import java.util.Map;
 
@@ -28,7 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.gateway.rsocket.test.MetadataEncoder;
+import org.springframework.cloud.gateway.rsocket.common.test.MetadataEncoder;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.messaging.rsocket.MetadataExtractor;
 import org.springframework.messaging.rsocket.RSocketStrategies;

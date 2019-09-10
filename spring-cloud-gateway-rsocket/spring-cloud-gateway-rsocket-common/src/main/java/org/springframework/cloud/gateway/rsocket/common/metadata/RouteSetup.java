@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.cloud.gateway.rsocket.metadata;
+package org.springframework.cloud.gateway.rsocket.common.metadata;
 
 import java.math.BigInteger;
 import java.util.Map;
@@ -81,7 +81,7 @@ public final class RouteSetup extends TagsMetadata {
 		// @formatter:off
 		TagsMetadata tagsMetadata = TagsMetadata.builder(this)
 				.with(WellKnownKey.SERVICE_NAME, getServiceName())
-				.with(WellKnownKey.ROUTE_ID, getId().toString())
+				.with(WellKnownKey.ROUTE_ID, id == null ? null : getId().toString())
 				.build();
 		// @formatter:on
 

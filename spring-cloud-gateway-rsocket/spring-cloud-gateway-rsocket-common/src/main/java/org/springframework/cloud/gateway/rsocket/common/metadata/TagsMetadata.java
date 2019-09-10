@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.cloud.gateway.rsocket.metadata;
+package org.springframework.cloud.gateway.rsocket.common.metadata;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -35,8 +35,8 @@ import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.NettyDataBuffer;
 import org.springframework.util.Assert;
 
-import static org.springframework.cloud.gateway.rsocket.metadata.WellKnownKey.ROUTE_ID;
-import static org.springframework.cloud.gateway.rsocket.metadata.WellKnownKey.SERVICE_NAME;
+import static org.springframework.cloud.gateway.rsocket.common.metadata.WellKnownKey.ROUTE_ID;
+import static org.springframework.cloud.gateway.rsocket.common.metadata.WellKnownKey.SERVICE_NAME;
 
 public class TagsMetadata {
 

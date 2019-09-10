@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package org.springframework.cloud.gateway.rsocket.metadata;
+package org.springframework.cloud.gateway.rsocket.common.metadata;
 
 import java.math.BigInteger;
 
 import io.netty.buffer.ByteBuf;
 import org.junit.Test;
 
-import org.springframework.cloud.gateway.rsocket.metadata.TagsMetadata.Key;
+import org.springframework.cloud.gateway.rsocket.common.metadata.TagsMetadata.Key;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.cloud.gateway.rsocket.metadata.WellKnownKey.REGION;
+import static org.springframework.cloud.gateway.rsocket.common.metadata.WellKnownKey.REGION;
 
 public class RouteSetupTests {
 

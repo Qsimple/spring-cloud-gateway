@@ -21,8 +21,8 @@ import java.math.BigInteger;
 import io.rsocket.ConnectionSetupPayload;
 import io.rsocket.RSocket;
 
+import org.springframework.cloud.gateway.rsocket.common.metadata.RouteSetup;
 import org.springframework.cloud.gateway.rsocket.filter.AbstractRSocketExchange;
-import org.springframework.cloud.gateway.rsocket.metadata.RouteSetup;
 
 public class SocketAcceptorExchange extends AbstractRSocketExchange {
 

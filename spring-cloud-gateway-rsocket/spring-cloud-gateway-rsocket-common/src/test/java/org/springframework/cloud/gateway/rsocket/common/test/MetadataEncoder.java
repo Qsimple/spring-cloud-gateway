@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.springframework.cloud.gateway.rsocket.test;
+package org.springframework.cloud.gateway.rsocket.common.test;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;

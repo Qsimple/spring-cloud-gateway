@@ -26,8 +26,8 @@ import org.roaringbitmap.RoaringBitmap;
 import reactor.util.function.Tuple2;
 import reactor.util.function.Tuples;
 
-import org.springframework.cloud.gateway.rsocket.metadata.TagsMetadata;
-import org.springframework.cloud.gateway.rsocket.metadata.WellKnownKey;
+import org.springframework.cloud.gateway.rsocket.common.metadata.TagsMetadata;
+import org.springframework.cloud.gateway.rsocket.common.metadata.WellKnownKey;
 import org.springframework.core.style.ToStringCreator;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -20,9 +20,9 @@ import java.math.BigInteger;
 import java.util.Map;
 import java.util.Objects;
 
-import org.springframework.cloud.gateway.rsocket.metadata.TagsMetadata;
-import org.springframework.cloud.gateway.rsocket.metadata.TagsMetadata.Key;
-import org.springframework.cloud.gateway.rsocket.metadata.WellKnownKey;
+import org.springframework.cloud.gateway.rsocket.common.metadata.TagsMetadata;
+import org.springframework.cloud.gateway.rsocket.common.metadata.TagsMetadata.Key;
+import org.springframework.cloud.gateway.rsocket.common.metadata.WellKnownKey;
 import org.springframework.core.style.ToStringCreator;
 import org.springframework.util.Assert;
 

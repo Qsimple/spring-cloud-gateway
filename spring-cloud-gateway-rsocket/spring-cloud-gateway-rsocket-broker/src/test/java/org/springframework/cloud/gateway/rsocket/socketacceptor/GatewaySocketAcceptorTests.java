@@ -32,12 +32,12 @@ import org.junit.Test;
 import reactor.core.publisher.Mono;
 
 import org.springframework.cloud.gateway.rsocket.autoconfigure.GatewayRSocketProperties;
+import org.springframework.cloud.gateway.rsocket.common.metadata.Metadata;
+import org.springframework.cloud.gateway.rsocket.common.metadata.RouteSetup;
+import org.springframework.cloud.gateway.rsocket.common.metadata.TagsMetadata;
+import org.springframework.cloud.gateway.rsocket.common.test.MetadataEncoder;
 import org.springframework.cloud.gateway.rsocket.core.GatewayRSocket;
 import org.springframework.cloud.gateway.rsocket.core.GatewayRSocketFactory;
-import org.springframework.cloud.gateway.rsocket.metadata.Metadata;
-import org.springframework.cloud.gateway.rsocket.metadata.RouteSetup;
-import org.springframework.cloud.gateway.rsocket.metadata.TagsMetadata;
-import org.springframework.cloud.gateway.rsocket.test.MetadataEncoder;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.messaging.rsocket.DefaultMetadataExtractor;
 import org.springframework.messaging.rsocket.PayloadUtils;
@@ -48,7 +48,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.springframework.cloud.gateway.rsocket.metadata.RouteSetup.ROUTE_SETUP_MIME_TYPE;
+import static org.springframework.cloud.gateway.rsocket.common.metadata.RouteSetup.ROUTE_SETUP_MIME_TYPE;
 
 /**
  * @author Spencer Gibb

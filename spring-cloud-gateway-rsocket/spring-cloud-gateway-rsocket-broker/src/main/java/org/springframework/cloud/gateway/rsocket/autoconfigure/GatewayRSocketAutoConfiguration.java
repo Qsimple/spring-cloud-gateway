@@ -21,21 +21,20 @@ import java.util.List;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.rsocket.RSocket;
 
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.rsocket.RSocketServerAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.boot.rsocket.messaging.RSocketStrategiesCustomizer;
 import org.springframework.boot.rsocket.server.RSocketServerBootstrap;
 import org.springframework.boot.rsocket.server.RSocketServerFactory;
 import org.springframework.cloud.gateway.rsocket.actuate.GatewayRSocketActuator;
 import org.springframework.cloud.gateway.rsocket.actuate.GatewayRSocketActuatorRegistrar;
+import org.springframework.cloud.gateway.rsocket.common.autoconfigure.GatewayRSocketCommonAutoConfiguration;
 import org.springframework.cloud.gateway.rsocket.core.GatewayRSocketFactory;
 import org.springframework.cloud.gateway.rsocket.core.GatewayServerRSocketFactoryCustomizer;
 import org.springframework.cloud.gateway.rsocket.core.PendingRequestRSocketFactory;
-import org.springframework.cloud.gateway.rsocket.metadata.Forwarding;
-import org.springframework.cloud.gateway.rsocket.metadata.RouteSetup;
 import org.springframework.cloud.gateway.rsocket.route.Routes;
 import org.springframework.cloud.gateway.rsocket.routing.LoadBalancerFactory;
 import org.springframework.cloud.gateway.rsocket.routing.RoutingTable;
@@ -48,13 +47,8 @@ import org.springframework.cloud.gateway.rsocket.socketacceptor.SocketAcceptorPr
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.messaging.rsocket.DefaultMetadataExtractor;
-import org.springframework.messaging.rsocket.MetadataExtractor;
 import org.springframework.messaging.rsocket.RSocketStrategies;
 import org.springframework.messaging.rsocket.annotation.support.RSocketMessageHandler;
-
-import static org.springframework.cloud.gateway.rsocket.metadata.Forwarding.FORWARDING_MIME_TYPE;
-import static org.springframework.cloud.gateway.rsocket.metadata.RouteSetup.ROUTE_SETUP_MIME_TYPE;
 
 /**
  * @author Spencer Gibb
@@ -65,6 +59,7 @@ import static org.springframework.cloud.gateway.rsocket.metadata.RouteSetup.ROUT
 @EnableConfigurationProperties
 @ConditionalOnClass(RSocket.class)
 @AutoConfigureBefore(RSocketServerAutoConfiguration.class)
+@AutoConfigureAfter(GatewayRSocketCommonAutoConfiguration.class)
 public class GatewayRSocketAutoConfiguration {
 
 	@Bean
@@ -127,23 +122,8 @@ public class GatewayRSocketAutoConfiguration {
 	public GatewaySocketAcceptor socketAcceptor(GatewayRSocketFactory rsocketFactory,
 			List<SocketAcceptorFilter> filters, MeterRegistry meterRegistry,
 			GatewayRSocketProperties properties, RSocketStrategies rSocketStrategies) {
-		MetadataExtractor metadataExtractor = registerMimeTypes(rSocketStrategies);
 		return new GatewaySocketAcceptor(rsocketFactory, filters, meterRegistry,
-				properties, metadataExtractor);
-	}
-
-	public static MetadataExtractor registerMimeTypes(
-			RSocketStrategies rSocketStrategies) {
-		MetadataExtractor metadataExtractor = rSocketStrategies.metadataExtractor();
-		// TODO: see if possible to make easier in framework.
-		if (metadataExtractor instanceof DefaultMetadataExtractor) {
-			DefaultMetadataExtractor extractor = (DefaultMetadataExtractor) metadataExtractor;
-			extractor.metadataToExtract(FORWARDING_MIME_TYPE, Forwarding.class,
-					Forwarding.METADATA_KEY);
-			extractor.metadataToExtract(ROUTE_SETUP_MIME_TYPE, RouteSetup.class,
-					RouteSetup.METADATA_KEY);
-		}
-		return metadataExtractor;
+				properties, rSocketStrategies.metadataExtractor());
 	}
 
 	@Bean
@@ -157,14 +137,6 @@ public class GatewayRSocketAutoConfiguration {
 			RSocketServerFactory rSocketServerFactory,
 			GatewaySocketAcceptor gatewaySocketAcceptor) {
 		return new RSocketServerBootstrap(rSocketServerFactory, gatewaySocketAcceptor);
-	}
-
-	@Bean
-	public RSocketStrategiesCustomizer gatewayRSocketStrategiesCustomizer() {
-		return strategies -> {
-			strategies.decoder(new Forwarding.Decoder(), new RouteSetup.Decoder())
-					.encoder(new Forwarding.Encoder(), new RouteSetup.Encoder());
-		};
 	}
 
 	@Bean

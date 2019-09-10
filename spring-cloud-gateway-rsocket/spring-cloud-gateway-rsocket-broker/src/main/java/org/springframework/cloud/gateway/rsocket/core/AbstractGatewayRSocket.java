@@ -25,7 +25,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import org.springframework.cloud.gateway.rsocket.autoconfigure.GatewayRSocketProperties;
-import org.springframework.cloud.gateway.rsocket.metadata.TagsMetadata;
+import org.springframework.cloud.gateway.rsocket.common.metadata.TagsMetadata;
 import org.springframework.messaging.rsocket.MetadataExtractor;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;

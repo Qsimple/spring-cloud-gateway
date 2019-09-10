@@ -21,15 +21,15 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import org.springframework.cloud.gateway.rsocket.autoconfigure.GatewayRSocketProperties;
-import org.springframework.cloud.gateway.rsocket.metadata.TagsMetadata;
+import org.springframework.cloud.gateway.rsocket.common.metadata.TagsMetadata;
 import org.springframework.cloud.gateway.rsocket.route.Routes;
 import org.springframework.cloud.gateway.rsocket.routing.LoadBalancerFactory;
 import org.springframework.cloud.gateway.rsocket.routing.RoutingTable;
 import org.springframework.messaging.rsocket.MetadataExtractor;
 import org.springframework.util.Assert;
 
-import static org.springframework.cloud.gateway.rsocket.metadata.WellKnownKey.ROUTE_ID;
-import static org.springframework.cloud.gateway.rsocket.metadata.WellKnownKey.SERVICE_NAME;
+import static org.springframework.cloud.gateway.rsocket.common.metadata.WellKnownKey.ROUTE_ID;
+import static org.springframework.cloud.gateway.rsocket.common.metadata.WellKnownKey.SERVICE_NAME;
 
 public class GatewayRSocketFactory {
 

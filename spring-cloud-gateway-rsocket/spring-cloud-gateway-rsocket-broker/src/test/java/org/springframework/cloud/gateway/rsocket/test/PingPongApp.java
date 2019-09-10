@@ -45,13 +45,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.cloud.gateway.rsocket.common.metadata.Forwarding;
+import org.springframework.cloud.gateway.rsocket.common.metadata.RouteSetup;
+import org.springframework.cloud.gateway.rsocket.common.metadata.TagsMetadata;
+import org.springframework.cloud.gateway.rsocket.common.metadata.WellKnownKey;
+import org.springframework.cloud.gateway.rsocket.common.test.MetadataEncoder;
 import org.springframework.cloud.gateway.rsocket.core.GatewayExchange;
 import org.springframework.cloud.gateway.rsocket.core.GatewayFilter;
 import org.springframework.cloud.gateway.rsocket.core.GatewayFilterChain;
-import org.springframework.cloud.gateway.rsocket.metadata.Forwarding;
-import org.springframework.cloud.gateway.rsocket.metadata.RouteSetup;
-import org.springframework.cloud.gateway.rsocket.metadata.TagsMetadata;
-import org.springframework.cloud.gateway.rsocket.metadata.WellKnownKey;
 import org.springframework.cloud.gateway.rsocket.socketacceptor.SocketAcceptorExchange;
 import org.springframework.cloud.gateway.rsocket.socketacceptor.SocketAcceptorFilter;
 import org.springframework.cloud.gateway.rsocket.socketacceptor.SocketAcceptorFilterChain;
@@ -63,8 +64,8 @@ import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.messaging.rsocket.RSocketStrategies;
 
 import static io.netty.buffer.Unpooled.EMPTY_BUFFER;
-import static org.springframework.cloud.gateway.rsocket.metadata.Metadata.COMPOSITE_MIME_TYPE;
-import static org.springframework.cloud.gateway.rsocket.metadata.RouteSetup.ROUTE_SETUP_MIME_TYPE;
+import static org.springframework.cloud.gateway.rsocket.common.metadata.Metadata.COMPOSITE_MIME_TYPE;
+import static org.springframework.cloud.gateway.rsocket.common.metadata.RouteSetup.ROUTE_SETUP_MIME_TYPE;
 
 @SpringBootApplication
 public class PingPongApp {

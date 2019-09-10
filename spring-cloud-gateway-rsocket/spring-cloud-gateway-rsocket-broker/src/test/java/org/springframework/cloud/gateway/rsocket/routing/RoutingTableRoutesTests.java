@@ -23,9 +23,9 @@ import org.junit.Test;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
+import org.springframework.cloud.gateway.rsocket.common.metadata.Forwarding;
+import org.springframework.cloud.gateway.rsocket.common.metadata.TagsMetadata;
 import org.springframework.cloud.gateway.rsocket.core.GatewayExchange;
-import org.springframework.cloud.gateway.rsocket.metadata.Forwarding;
-import org.springframework.cloud.gateway.rsocket.metadata.TagsMetadata;
 import org.springframework.cloud.gateway.rsocket.route.Route;
 import org.springframework.cloud.gateway.rsocket.routing.RoutingTable.RegisteredEvent;
 import org.springframework.cloud.gateway.rsocket.routing.RoutingTable.RouteEntry;
